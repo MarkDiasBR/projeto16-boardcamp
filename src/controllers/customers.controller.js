@@ -31,4 +31,16 @@ export async function getCustomers(req, res) {
     } catch (err) {
         res.status(500).send(`🚫 Unexpected server error!\n\n${err.message}`);
     }
-  }
+}
+
+export async function getCustomerById(req, res) {
+
+    const { id } = req.params;
+
+    try {
+        const response = await db.query(`SELECT * FROM customers WHERE id=$1`, [id])
+        res.send(response.rows);
+    } catch (err) {
+        res.status(500).send(`🚫 Unexpected server error!\n\n${err.message}`);
+    }
+}
