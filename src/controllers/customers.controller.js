@@ -1,6 +1,6 @@
 import { db } from '../app.js';
 
-export async function postGame(req, res) {
+/* export async function postGame(req, res) {
 
     const { name, image, stockTotal, pricePerDay } = req.body;
 
@@ -17,8 +17,18 @@ export async function getGames(req, res) {
 
   try {
       const response = await db.query(`SELECT * FROM games`)
-      res.send(response.rows);
+      res.send(console.log(response.rows));
   } catch (err) {
       res.status(500).send(`🚫 Unexpected server error!\n\n${err.message}`);
   }
-}
+} */
+
+export async function getCustomers(req, res) {
+
+    try {
+        const response = await db.query(`SELECT * FROM customers`)
+        res.send(response.rows);
+    } catch (err) {
+        res.status(500).send(`🚫 Unexpected server error!\n\n${err.message}`);
+    }
+  }
