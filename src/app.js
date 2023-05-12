@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectToDatabase from '../database/database.connection.js';
 import connectToServer from '../server/server.connect.js';
+import chalk from 'chalk';
 // import router from './routes/index.routes.js';
 
 const app = express();
@@ -14,4 +15,7 @@ export const db = await connectToDatabase();
 
 // app.use(router);
 
-connectToServer(app);
+app.listen(process.env.PORT, () => {
+    console.log(chalk.bgMagenta('\n [Node.js/Express] Server connected SUCCESSFULLY! '), '🖥️⚙️✨');
+    console.log(chalk.white(' Server URL:'), chalk.blue.italic.underline(`http://localhost:${process.env.PORT}`));
+});
