@@ -16,7 +16,7 @@ export async function getCustomerById(req, res) {
 
     try {
         const response = await db.query(`SELECT * FROM customers WHERE id=$1`, [id]);
-        res.send(response.rows);
+        res.send(response.rows[0]);
     } catch (err) {
         res.status(500).send(`🚫 Unexpected server error!\n\n${err.message}`);
     }
